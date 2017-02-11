@@ -1,0 +1,74 @@
+.infoWindow {
+    border: 1px black solid;
+    float: left;
+    padding: 5px;
+    margin: 20px;
+    background-color: #a2a5a4;
+
+}
+
+.bright {
+    border: 2px black solid;
+    float: left;
+    padding: 5px;
+    margin: 20px;
+    background-color: #dce1dc;
+    font-size: 18px;
+}
+
+div {
+    border: 1px black solid;
+    float: none;
+}
+
+#content {
+    border: 3px #00d0d0 solid;
+    background-color: #7bfada;
+    padding: 5px;
+    display: inline-block;
+}
+
+.miniDiv {
+   display: inline-block;
+    width: 150px;
+    padding: 5px;
+}
+
+.infoDiv {
+    float: none;
+    width: 200px;
+    margin: 0;
+}
+
+.line {
+    background-color: #e3fff1;
+    float: left;
+
+}
+
+#menu {
+    background-color: cadetblue;
+}
+
+.lineBright {
+    background-color: #b6ffec;
+}
+
+.pic {
+    width: 15px;
+    height: 15px;
+}
+
+.green {
+    background-color: #5fe8a7;
+}
+
+.button {
+    margin: auto;
+}
+
+.generalInfoWindow {
+    border: none;
+    display: block;
+    vertical-align: top;
+}
