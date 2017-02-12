@@ -1,6 +1,7 @@
 .infoWindow {
     border: 1px black solid;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     padding: 5px;
     margin: 20px;
     background-color: #a2a5a4;
@@ -9,7 +10,8 @@
 
 .bright {
     border: 2px black solid;
-    float: left;
+    display: inline-block;
+    vertical-align: top;
     padding: 5px;
     margin: 20px;
     background-color: #dce1dc;
@@ -18,7 +20,6 @@
 
 div {
     border: 1px black solid;
-    float: none;
 }
 
 #content {
@@ -42,8 +43,7 @@ div {
 
 .line {
     background-color: #e3fff1;
-    float: left;
-
+    display: block;
 }
 
 #menu {
