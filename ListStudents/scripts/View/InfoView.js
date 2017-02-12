@@ -1,11 +1,11 @@
 //Create new window with more information. works only one time
 function displayMoreInfo (fullForm) {
     var infoDiv = document.createElement('div'),
-        parent = document.body,
         infoWindow;
 
     replacer(fullForm, infoWindowTpl, infoDiv);
     document.body.appendChild(infoDiv);
+
     infoDiv.setAttribute('id', 'infoWindowList');
     infoDiv.setAttribute('class', 'infoWindow');
 
@@ -29,4 +29,3 @@ function animationShowList (neededElement) {
         neededElement.parentNode.removeChild(neededElement);
     }, false);
 }
-

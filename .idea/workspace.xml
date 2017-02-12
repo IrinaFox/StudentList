@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d27c6083-3f92-4ef7-9a86-c5abc1077b6b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ListStudents/scripts/View/InfoView.js" afterPath="$PROJECT_DIR$/ListStudents/scripts/View/InfoView.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ListStudents/scripts/Tpl/InfoWindowTpl.js" afterPath="$PROJECT_DIR$/ListStudents/scripts/Tpl/InfoWindowTpl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ListStudents/styles/mystyles.css" afterPath="$PROJECT_DIR$/ListStudents/styles/mystyles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SoftServe.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,10 +29,10 @@
       <file leaf-file-name="InfoWindowTpl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ListStudents/scripts/Tpl/InfoWindowTpl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-              <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+              <caret line="4" column="63" selection-start-line="4" selection-start-column="63" selection-end-line="4" selection-end-column="63" />
               <folding>
-                <marker date="1486866481057" expanded="true" signature="25:386" placeholder="..." />
+                <marker date="1486866727558" expanded="true" signature="21:316" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -44,8 +41,8 @@
       <file leaf-file-name="InfoView.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ListStudents/scripts/View/InfoView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19245283" vertical-offset="0" max-vertical-offset="795">
-              <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.6415094" vertical-offset="0" max-vertical-offset="795">
+              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -495,7 +492,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding>
-            <marker date="1486866481057" expanded="true" signature="25:386" placeholder="..." />
+            <marker date="1486866727558" expanded="true" signature="21:316" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -561,7 +558,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding>
-            <marker date="1486866481057" expanded="true" signature="25:386" placeholder="..." />
+            <marker date="1486866727558" expanded="true" signature="21:316" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -834,18 +831,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ListStudents/scripts/Tpl/InfoWindowTpl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="204">
-          <caret line="0" column="25" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <caret line="4" column="63" selection-start-line="4" selection-start-column="63" selection-end-line="4" selection-end-column="63" />
           <folding>
-            <marker date="1486866481057" expanded="true" signature="25:386" placeholder="..." />
+            <marker date="1486866727558" expanded="true" signature="21:316" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ListStudents/scripts/View/InfoView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19245283" vertical-offset="0" max-vertical-offset="795">
-          <caret line="9" column="48" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.6415094" vertical-offset="0" max-vertical-offset="795">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
           <folding />
         </state>
       </provider>
