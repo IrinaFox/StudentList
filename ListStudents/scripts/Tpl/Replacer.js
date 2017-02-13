@@ -1,14 +1,13 @@
-function replacer (fullForm, tpl, parent) {
-    var containerDiv = document.createElement('div'),
+'use strict';
+
+function replacer (_student, tpl) {
+    var student = _student.toJSON(),
         newTpl = tpl,
         key;
 
-    for (key in fullForm) {
-        newTpl = newTpl.replace(new RegExp(':' + key, 'g'), fullForm[key]);
+    for (key in student) {
+        newTpl = newTpl.replace(':' + key, student[key]);
     }
 
-    containerDiv.setAttribute('class', 'generalInfoWindow');
-    containerDiv.innerHTML = newTpl;
-
-    parent.appendChild(containerDiv);
+    return newTpl;
 }

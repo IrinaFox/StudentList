@@ -1,15 +1,52 @@
+'use strict';
+
 StudentList.prototype.displayStudentList = function () {
+    var students = new StudentList(),
+        studentList = students.getStudentList();
+
     addHeader();
 
-    [].forEach.call(this.students, function (item) {
-        var fullForm = item.toJSON();
+    [].forEach.call(studentList, function (item) {
+        var student = new ItemView(item);
 
-        createStudent(fullForm);
+        student.displayStudent();
+        student.addEvent();
     });
 };
 
 //Adding header
 function addHeader () {
     var content = document.getElementById('content');
+
     content.innerHTML += headerTpl;
 }
+
+
+/*function displayStudentList(_students) {
+    var students = _students;
+
+    addHeader();
+
+    [].forEach.call(students, function (item) {
+        var student = new ItemView(item);
+
+        student.displayStudent();
+        student.addEvent();
+    });
+ }*/
+
+ /*function StudentListView () {
+    var students = new StudentList(),
+    studentList = students.getStudentList();
+
+    addHeader();
+
+    this.displayStudentList = function () {
+        [].forEach.call(studentList, function (item) {
+            var student = new ItemView(item);
+
+            student.displayStudent();
+            student.addEvent();
+        });
+     }
+ }*/

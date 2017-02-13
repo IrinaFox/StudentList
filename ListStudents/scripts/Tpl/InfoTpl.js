@@ -1,3 +1,5 @@
+'use strict';
+
 var infoWindowTpl = '<div class="infoDiv">Name: :name</div>\
                      <div class="infoDiv">Last name: :lastName</div>\
                      <div class="infoDiv">Gender: :gender</div>\

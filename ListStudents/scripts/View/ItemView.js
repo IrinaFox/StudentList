@@ -1,21 +1,35 @@
+'use strict';
+
 //For one line with datas of student
-function createStudent (fullForm) {
-    var buttonName = fullForm['skype'],
-        content = document.getElementById('content'),
+function ItemView (_student) {
+    var content = document.getElementById('content'),
+        containerDiv = document.createElement('div'),
+        stringElement = replacer(_student, itemTpl),
         moreButton;
 
-    replacer(fullForm, itemTpl, content);
+    this.displayStudent = function () {
+        containerDiv.innerHTML = stringElement;
+        containerDiv.setAttribute('class', 'line');
+        content.appendChild(containerDiv);
+    };
 
-    moreButton = (document.getElementsByName(buttonName))[0];
+    this.addEvent = function () {
+        moreButton = containerDiv.getElementsByTagName('input')[0];
+        moreButton.addEventListener('click', showInfo, false);
+    };
 
-    moreButton.addEventListener('click', function () {
-        var infoWindowList = document.getElementById('infoWindowList');
+    function showInfo () {
+        var infoWindowList = document.getElementById('infoWindowList'),
+            info = new InfoView(_student);
 
         if (infoWindowList) {
             infoWindowList.parentNode.removeChild(infoWindowList);
-            displayMoreInfo(fullForm);
+
+            info.displayInfo();
+            info.addAnimation();
         } else {
-            displayMoreInfo(fullForm);
+            info.displayInfo();
+            info.addAnimation();
         }
-    }, false);
+    }
 }

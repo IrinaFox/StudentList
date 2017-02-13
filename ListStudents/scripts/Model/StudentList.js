@@ -1,3 +1,5 @@
+'use strict';
+
 //function for creating array with list of students
 function StudentList () {
     var irina = new Student("Irina", 'Ruban', "female", "princess_rina88", "+380505610891", "irina.fox88@gmail.com", '1995,2,4'),
@@ -7,7 +9,13 @@ function StudentList () {
         alexey = new Student("Alexey", 'Grigoryev', "male", "dn100980rev", "+380998885511", "alexey.rembo25@gmail.com", '1997,1,1'),
         vladimir = new Student("Vladimir", 'Timofeev', "male", "vovanium", "+380634207163", "vladivir.terminator55@gmail.com", '1997,1,1');
 
-    this.students = [irina, svetlana, polina, elena, alexey, vladimir];
+    this.getStudentList = function () {
+        return [irina, svetlana, polina, elena, alexey, vladimir];
+    };
+
+    /*this.displayList = function () {
+        displayStudentList(this.getStudentList());
+    };*/
 
     return this;
 }
