@@ -10,11 +10,13 @@ function ItemView (_student) {
     this.displayStudent = function () {
         containerDiv.innerHTML = stringElement;
         containerDiv.setAttribute('class', 'line');
+
         content.appendChild(containerDiv);
     };
 
     this.addEvent = function () {
         moreButton = containerDiv.getElementsByTagName('input')[0];
+
         moreButton.addEventListener('click', showInfo, false);
     };
 

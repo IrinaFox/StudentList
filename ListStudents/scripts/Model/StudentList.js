@@ -13,9 +13,5 @@ function StudentList () {
         return [irina, svetlana, polina, elena, alexey, vladimir];
     };
 
-    /*this.displayList = function () {
-        displayStudentList(this.getStudentList());
-    };*/
-
     return this;
 }

@@ -12,33 +12,18 @@ StudentList.prototype.displayStudentList = function () {
         student.displayStudent();
         student.addEvent();
     });
+
+    function addHeader () {
+        var content = document.getElementById('content'),
+            containerDiv = document.createElement('div');
+
+        containerDiv.innerHTML = headerTpl;
+        containerDiv.setAttribute('id', 'menu');
+        containerDiv.setAttribute('class', 'line');
+
+        content.appendChild(containerDiv);
+    }
 };
-
-//Adding header
-function addHeader () {
-    var content = document.getElementById('content'),
-        containerDiv = document.createElement('div');
-
-    containerDiv.innerHTML = headerTpl;
-    containerDiv.setAttribute('id', 'menu');
-    containerDiv.setAttribute('class', 'line');
-
-    content.appendChild(containerDiv);
-}
-
-
-/*function displayStudentList(_students) {
-    var students = _students;
-
-    addHeader();
-
-    [].forEach.call(students, function (item) {
-        var student = new ItemView(item);
-
-        student.displayStudent();
-        student.addEvent();
-    });
- }*/
 
  /*function StudentListView () {
     var students = new StudentList(),
