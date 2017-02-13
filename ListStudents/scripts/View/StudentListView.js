@@ -16,9 +16,14 @@ StudentList.prototype.displayStudentList = function () {
 
 //Adding header
 function addHeader () {
-    var content = document.getElementById('content');
+    var content = document.getElementById('content'),
+        containerDiv = document.createElement('div');
 
-    content.innerHTML += headerTpl;
+    containerDiv.innerHTML = headerTpl;
+    containerDiv.setAttribute('id', 'menu');
+    containerDiv.setAttribute('class', 'line');
+
+    content.appendChild(containerDiv);
 }
 
 
