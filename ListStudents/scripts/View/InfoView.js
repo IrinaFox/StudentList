@@ -21,6 +21,8 @@ function InfoView (_student) {
 
     //Add animation to info-window - it makes the window brighter and bigger
     function animationShowList (neededElement) {
+        var buttonEdit = neededElement.getElementsByTagName('input')[0];
+
         neededElement.addEventListener('mouseover', function () {
             neededElement.removeAttribute('class');
             neededElement.setAttribute('class','bright');
@@ -31,7 +33,7 @@ function InfoView (_student) {
             neededElement.setAttribute('class','infoWindow');
         }, false);
 
-        neededElement.addEventListener('click', function () {
+        buttonEdit.addEventListener('click', function () {
             neededElement.parentNode.removeChild(neededElement);
         }, false);
     }

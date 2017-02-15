@@ -78,3 +78,9 @@ div {
     width: 80px;
     padding: 5px;
 }
+
+.buttonClose {
+    margin: auto;
+    float: right;
+    background-color: #c6c6c6;
+}
