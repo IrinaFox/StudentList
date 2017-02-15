@@ -26,6 +26,14 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
         return students;
     };
 
+    this.get = function (key) {
+      return values[key];
+    };
+
+    this.set = function (key, value) {
+        values[key] = value;
+    };
+
     this.age = function () {
         var date = new Date(),
             age;

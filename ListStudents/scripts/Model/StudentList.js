@@ -10,9 +10,6 @@ function StudentList () {
         vladimir = new Student("Vladimir", 'Timofeev', "male", "vovanium", "+380634207163", "vladivir.terminator55@gmail.com", '1997,1,1');
 
     this.students = [irina, svetlana, polina, elena, alexey, vladimir];
-    this.getStudentList = function () {
-        return [irina, svetlana, polina, elena, alexey, vladimir];
-    };
 
     this.forEach = function (fn) {
        this.students.forEach(function (item) {
