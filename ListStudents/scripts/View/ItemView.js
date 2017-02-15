@@ -22,7 +22,10 @@ function ItemView (_student) {
 
         moreButton.addEventListener('click', showInfo, false);
         editButton.addEventListener('click', function () {
-            editView(student);
+            var editView = new EditView(student);
+
+            editView.displayEditForm();
+            editView.addEventButtonClose();
         }, false);
     };
 
