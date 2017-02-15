@@ -72,3 +72,9 @@ div {
     display: block;
     vertical-align: top;
 }
+
+.miniDivButton {
+    display: inline-block;
+    width: 80px;
+    padding: 5px;
+}
