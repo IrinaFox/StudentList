@@ -1,19 +1,12 @@
 'use strict';
 
 function StudentListView () {
-    var students = new StudentList(),
-    studentList = students.getStudentList();
-
-    addHeader();
+    var students = new StudentList();
 
     this.displayStudentList = function () {
-        [].forEach.call(studentList, function (item) {
-            var student = new ItemView(item);
-
-            student.displayStudent();
-            student.addEvent();
-        });
-     };
+        addHeader();
+        students.forEach(forStudent);
+    };
 
     function addHeader () {
         var content = document.getElementById('content'),
@@ -24,5 +17,12 @@ function StudentListView () {
         containerDiv.setAttribute('class', 'line');
 
         content.appendChild(containerDiv);
+    }
+
+    function forStudent (item) {
+        var student = new ItemView(item);
+
+        student.displayStudent();
+        student.addEvent();
     }
  }
