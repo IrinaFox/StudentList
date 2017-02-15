@@ -4,7 +4,8 @@
 function ItemView (_student) {
     var content = document.getElementById('content'),
         containerDiv = document.createElement('div'),
-        stringElement = replacer(_student, itemTpl),
+        student = _student,
+        stringElement = replacer(student, itemTpl),
         moreButton,
         editButton;
 
@@ -20,12 +21,16 @@ function ItemView (_student) {
         editButton = containerDiv.getElementsByTagName('input')[1];
 
         moreButton.addEventListener('click', showInfo, false);
-        editButton.addEventListener('click', showInfo, false);
+        editButton.addEventListener('click', function () {
+            editView(student);
+        }, false);
     };
+
+
 
     function showInfo () {
         var infoWindowList = document.getElementById('infoWindowList'),
-            info = new InfoView(_student);
+            info = new InfoView(student);
 
         if (infoWindowList) {
             infoWindowList.parentNode.removeChild(infoWindowList);

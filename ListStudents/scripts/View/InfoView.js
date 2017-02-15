@@ -3,7 +3,8 @@
 //Create new window with more information. works only one time
 function InfoView (_student) {
     var infoDiv = document.createElement('div'),
-        stringElement = replacer(_student, infoWindowTpl),
+        student = _student,
+        stringElement = replacer(student, infoWindowTpl),
         infoWindow;
 
     this.displayInfo = function () {
