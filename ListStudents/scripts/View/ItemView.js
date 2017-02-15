@@ -5,7 +5,8 @@ function ItemView (_student) {
     var content = document.getElementById('content'),
         containerDiv = document.createElement('div'),
         stringElement = replacer(_student, itemTpl),
-        moreButton;
+        moreButton,
+        editButton;
 
     this.displayStudent = function () {
         containerDiv.innerHTML = stringElement;
@@ -16,8 +17,10 @@ function ItemView (_student) {
 
     this.addEvent = function () {
         moreButton = containerDiv.getElementsByTagName('input')[0];
+        editButton = containerDiv.getElementsByTagName('input')[1];
 
         moreButton.addEventListener('click', showInfo, false);
+        editButton.addEventListener('click', showInfo, false);
     };
 
     function showInfo () {
