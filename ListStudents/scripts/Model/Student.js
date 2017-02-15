@@ -2,28 +2,37 @@
 
 //Constructor for creating students
 function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) {
-    var name = _name;
-    var lastName = _lastName;
-    var gender = _gender;
-    var skype = _skype;
-    var phone = _phone;
-    var email = _email;
-    var birthdayDate = new Date(_birthday);
+    var values = {
+        name: _name,
+        lastName: _lastName,
+        gender: _gender,
+        skype: _skype,
+        phone: _phone,
+        email:_email,
+        birthdayDate: new Date(_birthday)
+    };
 
     this.toJSON = function () {
-      var date = new Date(),
-          fullForm = {};
+        var students = {},
+            key;
 
-      fullForm.name = name;
-      fullForm.lastName = lastName;
-      fullForm.fullName = name  + " " +lastName;
-      fullForm.gender = gender;
-      fullForm.age = date.getFullYear() - birthdayDate.getFullYear();
-      fullForm.skype = skype;
-      fullForm.email = email;
-      fullForm.phone = phone;
+        for (key in values) {
+            students[key] = values[key];
+        }
 
-      return fullForm;
+        students['age'] = this.age();
+        students['fullName'] = values.name + ' ' + values.lastName;
+
+        return students;
+    };
+
+    this.age = function () {
+        var date = new Date(),
+            age;
+
+        age = date.getFullYear() - values.birthdayDate.getFullYear();
+
+        return age;
     };
 
     return this;
