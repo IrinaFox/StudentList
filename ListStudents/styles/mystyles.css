@@ -84,3 +84,11 @@ div {
     float: right;
     background-color: #c6c6c6;
 }
+.divInfoHeader {
+    width: 150px;
+    display: inline-block;
+}
+.divInfoValue {
+    width: 200px;
+    float: none;
+}
