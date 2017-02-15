@@ -26,10 +26,9 @@ function ItemView (_student) {
 
             editView.displayEditForm();
             editView.addEventButtonClose();
+            editView.addEventButtonSave();
         }, false);
     };
-
-
 
     function showInfo () {
         var infoWindowList = document.getElementById('infoWindowList'),
@@ -44,5 +43,19 @@ function ItemView (_student) {
             info.displayInfo();
             info.addAnimation();
         }
+    }
+}
+function showInfo (student) {
+    var infoWindowList = document.getElementById('infoWindowList'),
+        info = new InfoView(student);
+
+    if (infoWindowList) {
+        infoWindowList.parentNode.removeChild(infoWindowList);
+
+        info.displayInfo();
+        info.addAnimation();
+    } else {
+        info.displayInfo();
+        info.addAnimation();
     }
 }
