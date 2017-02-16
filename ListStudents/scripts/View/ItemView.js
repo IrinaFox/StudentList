@@ -21,13 +21,7 @@ function ItemView (_student) {
         editButton = containerDiv.getElementsByTagName('input')[1];
 
         moreButton.addEventListener('click', showInfo, false);
-        editButton.addEventListener('click', function () {
-            var editView = new EditView(student);
-
-            editView.displayEditForm();
-            editView.addEventButtonClose();
-            editView.addEventButtonSave();
-        }, false);
+        editButton.addEventListener('click', showEdit, false);
     };
 
     function showInfo () {
@@ -44,18 +38,23 @@ function ItemView (_student) {
             info.addAnimation();
         }
     }
-}
-function showInfo (student) {
-    var infoWindowList = document.getElementById('infoWindowList'),
-        info = new InfoView(student);
 
-    if (infoWindowList) {
-        infoWindowList.parentNode.removeChild(infoWindowList);
+    function showEdit () {
+        var editView = new EditView(student);
 
-        info.displayInfo();
-        info.addAnimation();
-    } else {
-        info.displayInfo();
-        info.addAnimation();
+        editView.displayEditForm();
+        editView.addEventButtonClose();
+        editView.addEventButtonSave(showInfo, changeMainList);
+    }
+
+    function changeMainList () {
+        var divName = containerDiv.getElementsByClassName('miniDiv')[0],
+            divSkype = containerDiv.getElementsByClassName('miniDiv')[1],
+            divGender = containerDiv.getElementsByClassName('miniDiv')[2],
+            studentValues = student.toJSON();
+
+        divName.innerHTML = studentValues['fullName'];
+        divSkype.innerHTML = studentValues['skype'];
+        divGender.innerHTML = studentValues['gender'];
     }
 }

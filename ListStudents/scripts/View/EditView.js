@@ -1,3 +1,5 @@
+'use strict';
+
 function EditView (_student, callback) {
     var studentOne = _student,
         student = studentOne.toJSON(),
@@ -23,14 +25,15 @@ function EditView (_student, callback) {
         closeButton.addEventListener('click', closeEditForm, false);
     };
 
-    this.addEventButtonSave = function () {
+    this.addEventButtonSave = function (callback, callback2) {
         var saveButton = containerDiv.getElementsByClassName('buttonSave')[0],
             infoView = new InfoView(studentOne);
 
         saveButton.addEventListener('click', function () {
             saveEditForm();
             closeEditForm();
-            showInfo(studentOne);
+            callback();
+            callback2();
         }, false);
     };
 
@@ -42,15 +45,14 @@ function EditView (_student, callback) {
         var newElements = containerDiv.getElementsByClassName('editElement'),
             newValues = [],
             index = 0,
-            index0 = 0,
             i;
 
         for (i = 0; i < newElements.length; i++) {
             newValues[index] = newElements[i].value;
             index++;
         }
+
         index = 0;
-       console.log(newValues);
 
         for (key in student) {
             studentOne.set(key, newValues[index]);
@@ -63,6 +65,7 @@ function EditView (_student, callback) {
 
         delete student['birthdayDate'];
         delete student['fullName'];
+        delete student['age'];
 
         for (key in student) {
             string += editTpl.replace(':value', key)
