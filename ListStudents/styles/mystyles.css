@@ -112,3 +112,12 @@ div {
 .buttonSave {
     float: right;
 }
+
+.editDiv {
+    width: 350px;
+}
+
+#infoWindowList
+{
+    display: inline-block;
+}

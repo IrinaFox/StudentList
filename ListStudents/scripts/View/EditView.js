@@ -9,10 +9,10 @@ function EditView (_student, callback) {
         key;
 
     this.displayEditForm = function () {
-        var editForm = document.getElementById('editForm');
+        var infoWindowList = document.getElementById('infoWindowList');
 
-        if (editForm) {
-            editForm.parentNode.removeChild(editForm);
+        if (infoWindowList) {
+            infoWindowList.parentNode.removeChild(infoWindowList);
 
             showEdit();
         } else {
@@ -43,7 +43,7 @@ function EditView (_student, callback) {
     }
 
     function showEdit () {
-        containerDiv.setAttribute('id', 'editForm');
+        containerDiv.setAttribute('id', 'infoWindowList');
 
         delete student['birthdayDate'];
         delete student['fullName'];
