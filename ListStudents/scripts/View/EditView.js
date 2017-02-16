@@ -1,5 +1,6 @@
 'use strict';
 
+//Make new window, where the user can edit all data except age and birthday
 function EditView (_student, callback) {
     var studentOne = _student,
         student = studentOne.toJSON(),
@@ -41,6 +42,24 @@ function EditView (_student, callback) {
         containerDiv.parentNode.removeChild(containerDiv);
     }
 
+    function showEdit () {
+        containerDiv.setAttribute('id', 'editForm');
+
+        delete student['birthdayDate'];
+        delete student['fullName'];
+        delete student['age'];
+
+        for (key in student) {
+            string += editTpl.replace(':value', key)
+                .replace(':key', student[key]);
+        }
+
+        string += buttonTpl;
+        containerDiv.innerHTML = string;
+
+        document.body.appendChild(containerDiv);
+    }
+
     function saveEditForm () {
         var newElements = containerDiv.getElementsByClassName('editElement'),
             newValues = [],
@@ -58,24 +77,6 @@ function EditView (_student, callback) {
             studentOne.set(key, newValues[index]);
             index++;
         }
-    }
-
-    function showEdit () {
-        containerDiv.setAttribute('id', 'editForm');
-
-        delete student['birthdayDate'];
-        delete student['fullName'];
-        delete student['age'];
-
-        for (key in student) {
-            string += editTpl.replace(':value', key)
-                .replace(':key', student[key]);
-        }
-        string += closeTpl;
-
-        containerDiv.innerHTML = string;
-
-        document.body.appendChild(containerDiv);
     }
 
     return this;

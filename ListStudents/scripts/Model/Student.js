@@ -27,7 +27,7 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
     };
 
     this.get = function (key) {
-      return values[key];
+        return values[key];
     };
 
     this.set = function (key, value) {

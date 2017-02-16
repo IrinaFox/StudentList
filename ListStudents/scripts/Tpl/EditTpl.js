@@ -5,6 +5,5 @@ var editTpl = `<div class="editDiv">
                         <input type="text" value=":key" class="editElement">
                </div>`;
 
-var closeTpl = `<input type="button" value="Close" class="buttonClose">
+var buttonTpl = `<input type="button" value="Close" class="buttonClose">
                 <input type="button" value="Save" class="buttonSave">`;
-
