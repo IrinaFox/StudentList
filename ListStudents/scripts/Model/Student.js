@@ -13,35 +13,35 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
     };
 
     this.toJSON = function () {
-        var students = {},
+        var student = {},
             key;
 
         for (key in values) {
-            students[key] = values[key];
+            student[key] = values[key];
         }
 
-        students['age'] = this.age();
-        students['fullName'] = values.name + ' ' + values.lastName;
+        student['age'] = getAge();
+        student['fullName'] = values.name + ' ' + values.lastName;
 
-        return students;
+        return student;
     };
 
     this.get = function (key) {
-        return values[key];
+        return (key === 'age')? getAge(): values[key];
     };
 
     this.set = function (key, value) {
         values[key] = value;
     };
 
-    this.age = function () {
+    function getAge () {
         var date = new Date(),
             age;
 
         age = date.getFullYear() - values.birthdayDate.getFullYear();
 
         return age;
-    };
+    }
 
     return this;
 }

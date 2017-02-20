@@ -8,8 +8,8 @@ function EditView (_student, callback) {
         string = '',
         key;
 
-    this.displayEditForm = function () {
-        var infoWindowList = document.getElementById('infoWindowList');
+    this.displayEditForm = function (showInfo, changeMainList) {
+        var infoWindowList = document.querySelector('#infoWindowList');
 
         if (infoWindowList) {
             infoWindowList.parentNode.removeChild(infoWindowList);
@@ -18,29 +18,10 @@ function EditView (_student, callback) {
         } else {
            showEdit();
         }
+
+        addEventButtonClose();
+        addEventButtonSave(showInfo, changeMainList);
     };
-
-    this.addEventButtonClose = function () {
-        var closeButton = containerDiv.getElementsByClassName('buttonClose')[0];
-
-        closeButton.addEventListener('click', closeEditForm, false);
-    };
-
-    this.addEventButtonSave = function (callback, callback2) {
-        var saveButton = containerDiv.getElementsByClassName('buttonSave')[0],
-            infoView = new InfoView(studentOne);
-
-        saveButton.addEventListener('click', function () {
-            saveEditForm();
-            closeEditForm();
-            callback();
-            callback2();
-        }, false);
-    };
-
-    function closeEditForm () {
-        containerDiv.parentNode.removeChild(containerDiv);
-    }
 
     function showEdit () {
         containerDiv.setAttribute('id', 'infoWindowList');
@@ -60,8 +41,30 @@ function EditView (_student, callback) {
         document.body.appendChild(containerDiv);
     }
 
+    function addEventButtonClose () {
+        var closeButton = containerDiv.querySelector('.buttonClose');
+
+        closeButton.addEventListener('click', closeEditForm, false);
+    }
+
+    function closeEditForm () {
+        containerDiv.parentNode.removeChild(containerDiv);
+    }
+
+    function addEventButtonSave (showInfo, changeMainList) {
+        var saveButton = containerDiv.querySelector('.buttonSave'),
+            infoView = new InfoView(studentOne);
+
+        saveButton.addEventListener('click', function () {
+            saveEditForm();
+            closeEditForm();
+            showInfo();
+            changeMainList();
+        }, false);
+    }
+
     function saveEditForm () {
-        var newElements = containerDiv.getElementsByClassName('editElement'),
+        var newElements = containerDiv.querySelectorAll('.editElement'),
             newValues = [],
             index = 0,
             i;

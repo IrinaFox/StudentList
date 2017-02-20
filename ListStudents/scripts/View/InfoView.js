@@ -4,38 +4,43 @@
 function InfoView (_student) {
     var infoDiv = document.createElement('div'),
         student = _student,
-        stringElement = replacer(student, infoWindowTpl),
         infoWindow;
 
     this.displayInfo = function () {
+        var infoWindowList = document.querySelector('#infoWindowList'),
+            stringElement = replacer(student, infoWindowTpl);
+
         infoDiv.innerHTML = stringElement;
         infoDiv.setAttribute('id', 'infoWindowList');
-        infoDiv.setAttribute('class', 'infoWindow');
+        infoDiv.classList.add('infoWindow');
 
-        document.body.appendChild(infoDiv);
-    };
+        if (infoWindowList) {
+            infoWindowList.parentNode.removeChild(infoWindowList);
+            document.body.appendChild(infoDiv);
+        }  else {
+            document.body.appendChild(infoDiv);
+        }
 
-    this.addAnimation = function () {
-        infoWindow = document.getElementById('infoWindowList');
-        animationShowList(infoWindow);
+        animationShowList();
     };
 
     //Add animation to info-window - it makes the window brighter and bigger
-    function animationShowList (neededElement) {
-        var buttonEdit = neededElement.getElementsByTagName('input')[0];
+    function animationShowList () {
+        var infoWindow = document.querySelector('#infoWindowList'),
+            buttonEdit = infoWindow.querySelector('input');
 
-        neededElement.addEventListener('mouseover', function () {
-            neededElement.removeAttribute('class');
-            neededElement.setAttribute('class','bright');
+        infoWindow.addEventListener('mouseover', function () {
+            infoWindow.classList.toggle('bright');
+            infoWindow.classList.toggle('infoWindow');
         }, false);
 
-        neededElement.addEventListener('mouseout', function () {
-            neededElement.removeAttribute('class');
-            neededElement.setAttribute('class','infoWindow');
+        infoWindow.addEventListener('mouseout', function () {
+            infoWindow.classList.toggle('bright');
+            infoWindow.classList.toggle('infoWindow');
         }, false);
 
         buttonEdit.addEventListener('click', function () {
-            neededElement.parentNode.removeChild(neededElement);
+            infoWindow.parentNode.removeChild(infoWindow);
         }, false);
     }
 }

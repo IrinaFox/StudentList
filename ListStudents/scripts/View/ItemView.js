@@ -2,59 +2,63 @@
 
 //For one line with datas of student
 function ItemView (_student) {
-    var content = document.getElementById('content'),
+    var content = document.querySelector('#content'),
         containerDiv = document.createElement('div'),
         student = _student,
-        stringElement = replacer(student, itemTpl),
+        info = new InfoView(student),
         moreButton,
         editButton;
 
     this.displayStudent = function () {
+        var stringElement = replacer(student, itemTpl);
+
         containerDiv.innerHTML = stringElement;
-        containerDiv.setAttribute('class', 'line');
+        containerDiv.classList.add('line');
 
         content.appendChild(containerDiv);
+
+       addEvent();
     };
 
-    this.addEvent = function () {
-        moreButton = containerDiv.getElementsByTagName('input')[0];
-        editButton = containerDiv.getElementsByTagName('input')[1];
+    function addEvent () {
+        var buttons = containerDiv.querySelectorAll('input');
 
-        moreButton.addEventListener('click', showInfo, false);
+        moreButton = buttons[0];
+        editButton = buttons[1];
+
+        moreButton.addEventListener('click', info.displayInfo, false);
         editButton.addEventListener('click', showEdit, false);
-    };
-
-    function showInfo () {
-        var infoWindowList = document.getElementById('infoWindowList'),
-            info = new InfoView(student);
-
-        if (infoWindowList) {
-            infoWindowList.parentNode.removeChild(infoWindowList);
-
-            info.displayInfo();
-            info.addAnimation();
-        } else {
-            info.displayInfo();
-            info.addAnimation();
-        }
     }
 
     function showEdit () {
         var editView = new EditView(student);
 
-        editView.displayEditForm();
-        editView.addEventButtonClose();
-        editView.addEventButtonSave(showInfo, changeMainList);
+        editView.displayEditForm(info.displayInfo, changeMainList);
+    }
+
+    function changeMainList2 () {
+        var formElements = containerDiv.querySelectorAll('.miniDiv'),
+            studentValues = student.toJSON();
+
+        [].forEach.call(formElements, function (item) {
+            var formValue = studentValues[item.classList[1]];
+
+            item.innerHTML = formValue;
+        })
     }
 
     function changeMainList () {
-        var divName = containerDiv.getElementsByClassName('miniDiv')[0],
-            divSkype = containerDiv.getElementsByClassName('miniDiv')[1],
-            divGender = containerDiv.getElementsByClassName('miniDiv')[2],
-            studentValues = student.toJSON();
+        var stringElement = replacer(student, itemTpl);
 
-        divName.innerHTML = studentValues['fullName'];
-        divSkype.innerHTML = studentValues['skype'];
-        divGender.innerHTML = studentValues['gender'];
+        //Delete data with buttons and their events
+        moreButton.removeEventListener('click', info.displayInfo, false);
+        editButton.removeEventListener('click', showEdit, false);
+        containerDiv.innerHTML = '';
+
+        //Set new data and new events to buttons
+        containerDiv.innerHTML = stringElement;
+        addEvent();
     }
+
+    return this;
 }

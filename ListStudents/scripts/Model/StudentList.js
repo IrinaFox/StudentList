@@ -7,13 +7,12 @@ function StudentList () {
         polina = new Student("Polina", 'Zhylyaeva', "female", "polina_volna", "+380934445566", "poluina.catty3@gmail.com", '1997,1,1'),
         elena = new Student("Elena", 'Ryndina', "female", "izaya256", "+380666668888", "elena.flower123@gmail.com", '1997,1,1'),
         alexey = new Student("Alexey", 'Grigoryev', "male", "dn100980rev", "+380998885511", "alexey.rembo25@gmail.com", '1997,1,1'),
-        vladimir = new Student("Vladimir", 'Timofeev', "male", "vovanium", "+380634207163", "vladivir.terminator55@gmail.com", '1997,1,1');
-
-    this.students = [irina, svetlana, polina, elena, alexey, vladimir];
+        vladimir = new Student("Vladimir", 'Timofeev', "male", "vovanium", "+380634207163", "vladivir.terminator55@gmail.com", '1997,1,1'),
+        students = [irina, svetlana, polina, elena, alexey, vladimir];
 
     this.forEach = function (fn) {
-       this.students.forEach(function (item) {
-           fn(item);
+       students.forEach(function (item, i) {
+           fn(item, i);
        });
     };
 

@@ -5,24 +5,23 @@ function StudentListView () {
 
     this.displayStudentList = function () {
         addHeader();
-        students.forEach(forStudent);
+        students.forEach(createStudent);
     };
 
     function addHeader () {
-        var content = document.getElementById('content'),
+        var content = document.querySelector('#content'),
             containerDiv = document.createElement('div');
 
         containerDiv.innerHTML = headerTpl;
+        containerDiv.classList.add('line');
         containerDiv.setAttribute('id', 'menu');
-        containerDiv.setAttribute('class', 'line');
 
         content.appendChild(containerDiv);
     }
 
-    function forStudent (item) {
+    function createStudent (item) {
         var student = new ItemView(item);
 
         student.displayStudent();
-        student.addEvent();
     }
  }
