@@ -51,7 +51,7 @@ function EditView (_student, callback) {
         containerDiv.parentNode.removeChild(containerDiv);
     }
 
-    function addEventButtonSave (showInfo, changeMainList) {
+    function addEventButtonSave (showInfo) {
         var saveButton = containerDiv.querySelector('.buttonSave'),
             infoView = new InfoView(studentOne);
 
@@ -59,7 +59,6 @@ function EditView (_student, callback) {
             saveEditForm();
             closeEditForm();
             showInfo();
-            changeMainList();
         }, false);
     }
 

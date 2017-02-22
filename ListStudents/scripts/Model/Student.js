@@ -3,13 +3,24 @@
 //Constructor for creating students
 function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) {
     var values = {
-        name: _name,
-        lastName: _lastName,
-        gender: _gender,
-        skype: _skype,
-        phone: _phone,
-        email:_email,
-        birthdayDate: new Date(_birthday)
+            name: _name,
+            lastName: _lastName,
+            gender: _gender,
+            skype: _skype,
+            phone: _phone,
+            email:_email,
+            birthdayDate: new Date(_birthday)
+        },
+        listeners = {
+            change: []
+        };
+
+    this.on = function (eventName, callback) {
+        if (!listeners.hasOwnProperty(eventName)) {
+            listeners[eventName] = [];
+        }
+
+        listeners[eventName].push(callback);
     };
 
     this.toJSON = function () {
@@ -30,8 +41,16 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
         return (key === 'age')? getAge(): values[key];
     };
 
-    this.set = function (key, value) {
+    this.set = function (_key, _value) {
+        var key = _key,
+            value = _value,
+            firstKey = values[key];
+
         values[key] = value;
+
+        if (firstKey !== value) {
+            triggerEvent('change');
+        }
     };
 
     function getAge () {
@@ -41,6 +60,14 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
         age = date.getFullYear() - values.birthdayDate.getFullYear();
 
         return age;
+    }
+
+    function triggerEvent (eventName) {
+        if (listeners.hasOwnProperty(eventName)) {
+            listeners[eventName].forEach(function (callback) {
+                callback();
+            });
+        }
     }
 
     return this;

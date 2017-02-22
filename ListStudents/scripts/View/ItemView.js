@@ -33,7 +33,7 @@ function ItemView (_student) {
     function showEdit () {
         var editView = new EditView(student);
 
-        editView.displayEditForm(info.displayInfo, changeMainList);
+        editView.displayEditForm(info.displayInfo);
     }
 
     function changeMainList2 () {
@@ -47,8 +47,9 @@ function ItemView (_student) {
         })
     }
 
-    function changeMainList () {
+    student.on('change', function () {
         var stringElement = replacer(student, itemTpl);
+        console.log(stringElement);
 
         //Delete data with buttons and their events
         moreButton.removeEventListener('click', info.displayInfo, false);
@@ -58,7 +59,7 @@ function ItemView (_student) {
         //Set new data and new events to buttons
         containerDiv.innerHTML = stringElement;
         addEvent();
-    }
+    });
 
     return this;
 }
