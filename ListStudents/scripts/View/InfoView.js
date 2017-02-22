@@ -1,9 +1,10 @@
 'use strict';
 
 //Create new window with more information. works only one time
-function InfoView (_student) {
+function InfoView (_student, _container) {
     var infoDiv = document.createElement('div'),
         student = _student,
+        container = _container,
         infoWindow;
 
     this.displayInfo = function () {
@@ -16,9 +17,9 @@ function InfoView (_student) {
 
         if (infoWindowList) {
             infoWindowList.parentNode.removeChild(infoWindowList);
-            document.body.appendChild(infoDiv);
+            container.appendChild(infoDiv);
         }  else {
-            document.body.appendChild(infoDiv);
+            container.appendChild(infoDiv);
         }
 
         animationShowList();

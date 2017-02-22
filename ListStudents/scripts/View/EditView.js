@@ -1,11 +1,12 @@
 'use strict';
 
 //Make new window, where the user can edit all data except age and birthday
-function EditView (_student, callback) {
+function EditView (_student, _container) {
     var studentOne = _student,
         student = studentOne.toJSON(),
         containerDiv = document.createElement('div'),
         string = '',
+        container = _container,
         key;
 
     this.displayEditForm = function (showInfo, changeMainList) {
@@ -38,7 +39,7 @@ function EditView (_student, callback) {
         string += buttonTpl;
         containerDiv.innerHTML = string;
 
-        document.body.appendChild(containerDiv);
+        container.appendChild(containerDiv);
     }
 
     function addEventButtonClose () {

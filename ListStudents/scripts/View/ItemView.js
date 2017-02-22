@@ -5,7 +5,7 @@ function ItemView (_student) {
     var content = document.querySelector('#content'),
         containerDiv = document.createElement('div'),
         student = _student,
-        info = new InfoView(student),
+        info = new InfoView(student, document.body),
         moreButton,
         editButton;
 
@@ -31,7 +31,7 @@ function ItemView (_student) {
     }
 
     function showEdit () {
-        var editView = new EditView(student);
+        var editView = new EditView(student, document.body);
 
         editView.displayEditForm(info.displayInfo);
     }
@@ -49,7 +49,6 @@ function ItemView (_student) {
 
     student.on('change', function () {
         var stringElement = replacer(student, itemTpl);
-        console.log(stringElement);
 
         //Delete data with buttons and their events
         moreButton.removeEventListener('click', info.displayInfo, false);
