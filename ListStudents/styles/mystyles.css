@@ -4,8 +4,7 @@
     vertical-align: top;
     padding: 5px;
     margin: 20px;
-    background-color: #a2a5a4;
-
+    background-color: #e8ebea;
 }
 
 .bright {
@@ -44,6 +43,7 @@ div {
 .line {
     background-color: #e3fff1;
     display: block;
+    border: none;
 }
 
 #menu {

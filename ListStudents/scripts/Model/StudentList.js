@@ -11,9 +11,7 @@ function StudentList () {
         students = [irina, svetlana, polina, elena, alexey, vladimir];
 
     this.forEach = function (fn) {
-       students.forEach(function (item, i) {
-           fn(item, i);
-       });
+       students.forEach(fn);
     };
 
     return this;
