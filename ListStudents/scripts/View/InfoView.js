@@ -2,35 +2,31 @@
 
 //Create new window with more information. works only one time
 function InfoView () {
-    var listeners = {
-            opened: []
-        },
-        opened = false,
-        infoWindow;
+    var infoDiv = document.createElement('div');
 
-    this.on = function (eventName, callback) {
-        if (!listeners.hasOwnProperty(eventName)) {
-            listeners[eventName] = [];
+    mediator.sub('infoChange', function (student) {
+         var stringElement = replacer(student, infoWindowTpl),
+             infoWindowList = document.querySelector('#infoWindowList');
+
+        infoDiv.setAttribute('id', 'infoWindowList');
+        infoDiv.classList.add('infoWindow');
+
+        infoDiv.innerHTML = stringElement;
+
+        if (infoWindowList) {
+            infoDiv.parentNode.removeChild(infoDiv);
         }
 
-        listeners[eventName].push(callback);
-    };
+        document.body.appendChild(infoDiv);
 
-    this.set = function (_boolean) {
-        var value = _boolean,
-            opened = value;
+        eventToButtonClose();
+    });
 
-        if (opened === true) {
-            triggerEvent('opened');
-        }
-    };
+    function eventToButtonClose () {
+        var buttonClose = infoDiv.querySelector('input');
 
-    function triggerEvent (eventName) {
-        if (listeners.hasOwnProperty(eventName)) {
-            listeners[eventName].forEach(function (callback) {
-                callback();
-            });
-        }
+        buttonClose.addEventListener('click', function () {
+            infoDiv.parentNode.removeChild(infoDiv);
+        }, false);
     }
-
 }

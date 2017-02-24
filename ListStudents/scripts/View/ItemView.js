@@ -1,17 +1,15 @@
 'use strict';
 
 //For one line with datas of student
-function ItemView (_student, _infoWindowList) {
-    var content = document.querySelector('#content'),
-        containerDiv = document.createElement('div'),
-        infoWindowList = _infoWindowList,
+function ItemView (_student) {
+    var containerDiv = document.createElement('div'),
         student = _student,
-        info = new InfoView(),
         moreButton,
         editButton;
 
     this.displayStudent = function () {
-        var stringElement = replacer(student, itemTpl);
+        var content = document.querySelector('#content'),
+            stringElement = replacer(student, itemTpl);
 
         containerDiv.innerHTML = stringElement;
         containerDiv.classList.add('line');
@@ -20,15 +18,6 @@ function ItemView (_student, _infoWindowList) {
 
        addEvent();
     };
-
-    info.on('opened', function () {
-        var stringElement = replacer(student, infoWindowTpl);
-
-        infoWindowList.innerHTML = stringElement;
-        document.body.appendChild(infoWindowList);
-
-        eventToButtonClose();
-    });
 
     student.on('change', function () {
         var stringElement = replacer(student, itemTpl);
@@ -54,21 +43,11 @@ function ItemView (_student, _infoWindowList) {
     }
 
     function changeInfoStatus () {
-        info.set(true);
+        mediator.pub('infoChange', student);
     }
 
     function showEdit () {
-        var editView = new EditView(student, document.body);
-
-        editView.displayEditForm(changeInfoStatus);
-    }
-
-    function eventToButtonClose () {
-        var buttonClose = infoWindowList.querySelector('input');
-
-        buttonClose.addEventListener('click', function () {
-             infoWindowList.parentNode.removeChild(infoWindowList);
-        }, false);
+        mediator.pub('editChange', student);
     }
 
     return this;
