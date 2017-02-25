@@ -1,3 +1,3 @@
 'use strict';
 
-var buttonColorTpl = '<input type="button" value=":color" class="button :color"/>';
+var buttonColorTpl = '<input type="button" value=":color" class="buttonColor :color"/>';
