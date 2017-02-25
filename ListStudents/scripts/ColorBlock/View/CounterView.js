@@ -23,7 +23,6 @@ function CounterView () {
     };
 
     this.changeCounter = function (_color) {
-        console.log('works');
         var counterDiv = document.querySelectorAll('.mainDiv')[2],
             stringCounter ='';
 

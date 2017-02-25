@@ -17,7 +17,7 @@ function ButtonView () {
 
             stringElement += newButton;
 
-            colorCounter.on(color, function () {
+            colorCounter.sub(color, function () {
                 block.changeBlock(color);
                 counter.changeCounter(color);
             });

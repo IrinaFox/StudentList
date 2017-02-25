@@ -26,17 +26,26 @@ function Mediator () {
     return this;
 }
 
+ColorCounter.prototype = new Observer();
+Student.prototype = new Observer();
+
+
 window.addEventListener('load', function () {
-    var studentList = new StudentListView();
+    function addStudentList () {
+        var studentList = new StudentListView();
+        studentList.displayStudentList();
+    }
 
-    studentList.displayStudentList();
+    function addColorBlock () {
+        var button = new ButtonView(),
+            counter = new CounterView(),
+            block = new BlockView();
 
-    var button = new ButtonView(),
-        counter = new CounterView(),
-        block = new BlockView();
+        button.displayButton();
+        block.displayBlock();
+        counter.displayCounter();
+    }
 
-    button.displayButton();
-    block.displayBlock();
-    counter.displayCounter();
-
+    addStudentList();
+    addColorBlock();
 }, false);

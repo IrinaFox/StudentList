@@ -19,7 +19,7 @@ function ItemView (_student) {
        addEvent();
     };
 
-    student.on('change', function () {
+    student.sub('change', function () {
         var stringElement = replacer(student, itemTpl);
 
         //Delete data with buttons and their events

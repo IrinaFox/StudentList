@@ -10,18 +10,7 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
             phone: _phone,
             email:_email,
             birthdayDate: new Date(_birthday)
-        },
-        listeners = {
-            change: []
         };
-
-    this.on = function (eventName, callback) {
-        if (!listeners.hasOwnProperty(eventName)) {
-            listeners[eventName] = [];
-        }
-
-        listeners[eventName].push(callback);
-    };
 
     this.toJSON = function () {
         var student = {},
@@ -49,7 +38,7 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
         values[key] = value;
 
         if (firstKey !== value) {
-            triggerEvent('change');
+            this.pub('change');
         }
     };
 
@@ -60,14 +49,6 @@ function Student (_name, _lastName, _gender, _skype, _phone, _email, _birthday) 
         age = date.getFullYear() - values.birthdayDate.getFullYear();
 
         return age;
-    }
-
-    function triggerEvent (eventName) {
-        if (listeners.hasOwnProperty(eventName)) {
-            listeners[eventName].forEach(function (callback) {
-                callback();
-            });
-        }
     }
 
     return this;
