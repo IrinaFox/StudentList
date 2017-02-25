@@ -3,37 +3,41 @@
 //Make new window, where the user can edit all data except age and birthday
 function EditView () {
     var containerDiv = document.createElement('div'),
+        closeButton,
+        saveButton,
+        student,
+        studentJSON,
         key;
 
     mediator.sub('editChange', function (_student) {
-        var infoWindowList = document.querySelector('#infoWindowList'),
-            student = _student,
-            studentJSON = student.toJSON();
+        var infoWindowList = document.querySelector('#infoWindowList');
+
+        student = _student;
+        studentJSON = student.toJSON();
 
         if (infoWindowList) {
             infoWindowList.parentNode.removeChild(infoWindowList);
         }
 
-        showEdit(studentJSON);
+        showEdit();
 
         addEventButtonClose();
-        addEventButtonSave(student, studentJSON);
+        addEventButtonSave();
     });
 
-    function showEdit (_student) {
+    function showEdit () {
         var content = document.querySelector('#additionalStudentList'),
-            student = _student,
             string = '';
 
         containerDiv.setAttribute('id', 'infoWindowList');
 
-        delete student['birthdayDate'];
-        delete student['fullName'];
-        delete student['age'];
+        delete studentJSON['birthdayDate'];
+        delete studentJSON['fullName'];
+        delete studentJSON['age'];
 
-        for (key in student) {
+        for (key in studentJSON) {
             string += editTpl.replace(':value', key)
-                .replace(':key', student[key]);
+                .replace(':key', studentJSON[key]);
         }
 
         string += buttonTpl;
@@ -43,30 +47,22 @@ function EditView () {
     }
 
     function addEventButtonClose () {
-        var closeButton = containerDiv.querySelector('.buttonClose');
-
+        closeButton = containerDiv.querySelector('.buttonClose');
         closeButton.addEventListener('click', closeEditForm, false);
     }
 
     function closeEditForm () {
         containerDiv.parentNode.removeChild(containerDiv);
+        closeButton.removeEventListener('click', closeEditForm);
     }
 
-    function addEventButtonSave (_student, _studentJSON) {
-        var saveButton = containerDiv.querySelector('.buttonSave'),
-            student = _student;
-
-        saveButton.addEventListener('click', function () {
-            saveEditForm(student, _studentJSON);
-            closeEditForm();
-            mediator.pub('infoChange', student);
-        }, false);
+    function addEventButtonSave () {
+        saveButton = containerDiv.querySelector('.buttonSave');
+        saveButton.addEventListener('click', saveEditForm, false);
     }
 
-    function saveEditForm (_student, _studentJSON) {
+    function saveEditForm () {
         var newElements = containerDiv.querySelectorAll('.editElement'),
-            studentJSON = _studentJSON,
-            student = _student,
             newValues = [],
             index = 0,
             i;
@@ -82,6 +78,10 @@ function EditView () {
             student.set(key, newValues[index]);
             index++;
         }
+
+        closeEditForm();
+        mediator.pub('infoChange', student);
+        saveButton.removeEventListener('click', saveEditForm);
     }
 
     return this;

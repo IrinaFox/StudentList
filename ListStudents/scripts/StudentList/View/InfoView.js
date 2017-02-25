@@ -2,7 +2,8 @@
 
 //Create new window with more information. works only one time
 function InfoView () {
-    var infoDiv = document.createElement('div');
+    var infoDiv = document.createElement('div'),
+        buttonClose;
 
     mediator.sub('infoChange', function (student) {
          var stringElement = replacer(student, infoWindowTpl),
@@ -24,10 +25,12 @@ function InfoView () {
     });
 
     function eventToButtonClose () {
-        var buttonClose = infoDiv.querySelector('input');
+        buttonClose = infoDiv.querySelector('input');
+        buttonClose.addEventListener('click', removeInfoDiv, false);
+    }
 
-        buttonClose.addEventListener('click', function () {
-            infoDiv.parentNode.removeChild(infoDiv);
-        }, false);
+    function removeInfoDiv () {
+        infoDiv.parentNode.removeChild(infoDiv);
+        buttonClose.removeEventListener('click', removeInfoDiv);
     }
 }
