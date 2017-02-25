@@ -31,4 +31,12 @@ window.addEventListener('load', function () {
 
     studentList.displayStudentList();
 
+    var button = new ButtonView(),
+        counter = new CounterView(),
+        block = new BlockView();
+
+    button.displayButton();
+    block.displayBlock();
+    counter.displayCounter();
+
 }, false);

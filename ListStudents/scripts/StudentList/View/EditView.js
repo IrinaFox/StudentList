@@ -21,7 +21,8 @@ function EditView () {
     });
 
     function showEdit (_student) {
-        var student = _student,
+        var content = document.querySelector('#additionalStudentList'),
+            student = _student,
             string = '';
 
         containerDiv.setAttribute('id', 'infoWindowList');
@@ -38,7 +39,7 @@ function EditView () {
         string += buttonTpl;
         containerDiv.innerHTML = string;
 
-        document.body.appendChild(containerDiv);
+        content.appendChild(containerDiv);
     }
 
     function addEventButtonClose () {

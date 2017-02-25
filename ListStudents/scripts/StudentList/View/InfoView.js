@@ -6,7 +6,8 @@ function InfoView () {
 
     mediator.sub('infoChange', function (student) {
          var stringElement = replacer(student, infoWindowTpl),
-             infoWindowList = document.querySelector('#infoWindowList');
+             infoWindowList = document.querySelector('#infoWindowList'),
+             content = document.querySelector('#additionalStudentList');
 
         infoDiv.setAttribute('id', 'infoWindowList');
         infoDiv.classList.add('infoWindow');
@@ -14,10 +15,10 @@ function InfoView () {
         infoDiv.innerHTML = stringElement;
 
         if (infoWindowList) {
-            infoDiv.parentNode.removeChild(infoDiv);
+            infoWindowList.parentNode.removeChild(infoWindowList);
         }
 
-        document.body.appendChild(infoDiv);
+        content.appendChild(infoDiv);
 
         eventToButtonClose();
     });

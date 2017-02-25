@@ -8,7 +8,7 @@ function ItemView (_student) {
         editButton;
 
     this.displayStudent = function () {
-        var content = document.querySelector('#content'),
+        var content = document.querySelector('#contentStudentList'),
             stringElement = replacer(student, itemTpl);
 
         containerDiv.innerHTML = stringElement;

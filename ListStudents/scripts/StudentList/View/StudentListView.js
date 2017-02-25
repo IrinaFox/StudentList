@@ -12,7 +12,7 @@ function StudentListView () {
     };
 
     function addHeader () {
-        var content = document.querySelector('#content'),
+        var content = document.querySelector('#contentStudentList'),
             containerDiv = document.createElement('div');
 
         containerDiv.innerHTML = headerTpl;
