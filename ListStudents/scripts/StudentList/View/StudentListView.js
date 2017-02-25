@@ -24,7 +24,6 @@ function StudentListView () {
 
     function createStudent (item) {
         var student = new ItemView(item);
-
         student.displayStudent();
     }
  }

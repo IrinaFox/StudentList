@@ -9,6 +9,8 @@ function EditView () {
         studentJSON,
         key;
 
+    containerDiv.setAttribute('id', 'infoWindowList');
+
     mediator.sub('editChange', function (_student) {
         var infoWindowList = document.querySelector('#infoWindowList');
 
@@ -20,7 +22,6 @@ function EditView () {
         }
 
         showEdit();
-
         addEventButtonClose();
         addEventButtonSave();
     });
@@ -28,8 +29,6 @@ function EditView () {
     function showEdit () {
         var content = document.querySelector('#additionalStudentList'),
             string = '';
-
-        containerDiv.setAttribute('id', 'infoWindowList');
 
         delete studentJSON['birthdayDate'];
         delete studentJSON['fullName'];

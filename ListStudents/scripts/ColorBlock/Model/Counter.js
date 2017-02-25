@@ -8,21 +8,21 @@ function ColorCounter () {
         },
         colorNow = undefined;
 
-    this.increaseCounter = function (color) {
-        counterOfColor[color]++;
+    this.increaseCounter = function (_color) {
+        counterOfColor[_color]++;
     };
 
     this.toArray = function () {
-        var JSON = [],
+        var array = [],
             index = 0,
             key;
 
         for (key in counterOfColor) {
-            JSON[index] = key;
+            array[index] = key;
             index++;
         }
 
-        return JSON;
+        return array;
     };
 
     this.toJSON = function () {
@@ -37,12 +37,9 @@ function ColorCounter () {
     };
 
     this.set = function (_value) {
-        var value = _value,
-            colorNow = value;
-
-       this.pub(colorNow);
+        colorNow = _value;
+        this.pub(colorNow);
     };
-
 
     return this;
 }

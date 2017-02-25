@@ -24,8 +24,8 @@ function ButtonView () {
         });
 
         miniDiv.innerHTML += stringElement;
-
         miniDiv.classList.add('mainDiv');
+
         content.appendChild(miniDiv);
 
         addEvent();

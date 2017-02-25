@@ -29,7 +29,6 @@ function Mediator () {
 ColorCounter.prototype = new Observer();
 Student.prototype = new Observer();
 
-
 window.addEventListener('load', function () {
     function addStudentList () {
         var studentList = new StudentListView();

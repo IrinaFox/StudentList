@@ -7,7 +7,6 @@ function BlockView () {
     this.displayBlock = function () {
         containerDiv.classList.add('mainDiv');
         containerDiv.innerHTML = blockTpL;
-
         content.appendChild(containerDiv);
     };
 
