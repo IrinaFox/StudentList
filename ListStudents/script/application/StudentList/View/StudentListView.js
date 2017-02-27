@@ -1,18 +1,18 @@
 'use strict';
 
-function StudentListView () {
+function StudentListView (_container) {
     var students = new StudentList();
 
     this.displayStudentList = function () {
-        addHeader();
+        addHeader(_container);
 
         students.forEach(function (item) {
             createStudent(item);
         });
     };
 
-    function addHeader () {
-        var content = document.querySelector('#contentStudentList'),
+    function addHeader (_container) {
+        var content = _container,
             containerDiv = document.createElement('div');
 
         containerDiv.innerHTML = headerTpl;

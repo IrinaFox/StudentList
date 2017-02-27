@@ -1,7 +1,7 @@
 'use strict';
 
-function BlockView () {
-    var content = document.querySelector('#contentColorBlock'),
+function BlockView (_container) {
+    var content = _container,
         containerDiv = document.createElement('div');
 
     this.displayBlock = function () {

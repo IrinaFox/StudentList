@@ -43,3 +43,5 @@ function ColorCounter () {
 
     return this;
 }
+
+ColorCounter.prototype = new Observer();

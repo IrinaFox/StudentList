@@ -1,7 +1,7 @@
 'use strict';
 
-function ButtonView () {
-    var content = document.querySelector('#contentColorBlock'),
+function ButtonView (_container) {
+    var content = _container,
         miniDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toArray(),
