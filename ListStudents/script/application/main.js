@@ -2,20 +2,21 @@
 
 var mediator = new Mediator(),
     infoView = new InfoView(),
-    editView = new EditView();
+    editView = new EditView(),
+    implementation;
 
 window.addEventListener('load', function () {
+    implementation = new Implementation();
+
     function addStudentList () {
-        var container = document.querySelector('#contentStudentList'),
-            studentList = new StudentListView(container);
+        var studentList = new StudentListView();
         studentList.displayStudentList();
     }
 
     function addColorBlock () {
-        var container = document.querySelector('#contentColorBlock'),
-            button = new ButtonView(container),
-            counter = new CounterView(container),
-            block = new BlockView(container);
+        var button = new ButtonView(),
+            counter = new CounterView(),
+            block = new BlockView();
 
         button.displayButton();
         block.displayBlock();

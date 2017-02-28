@@ -1,7 +1,7 @@
 'use strict';
 
-function CounterView (_container) {
-    var content = _container,
+function CounterView () {
+    var content = implementation.get('colorBlock'),
         containerDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toJSON(),

@@ -1,13 +1,12 @@
 'use strict';
 
-function ButtonView (_container) {
-    var content = _container,
+function ButtonView () {
+    var content = implementation.get('colorBlock'),
         miniDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toArray(),
         counter = new CounterView(),
-        block =  new BlockView(),
-        key;
+        block =  new BlockView();
 
     this.displayButton = function () {
         var stringElement = '';

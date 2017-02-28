@@ -8,7 +8,7 @@ function InfoView () {
     mediator.sub('infoChange', function (student) {
          var stringElement = replacer(student, infoWindowTpl),
              infoWindowList = document.querySelector('#infoWindowList'),
-             content = document.querySelector('#additionalStudentList');
+             content = implementation.get('info');
 
         infoDiv.setAttribute('id', 'infoWindowList');
         infoDiv.classList.add('infoWindow');

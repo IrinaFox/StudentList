@@ -27,7 +27,7 @@ function EditView () {
     });
 
     function showEdit () {
-        var content = document.querySelector('#additionalStudentList'),
+        var content = implementation.get('info'),
             string = '';
 
         delete studentJSON['birthdayDate'];

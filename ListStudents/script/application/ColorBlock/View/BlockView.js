@@ -1,7 +1,7 @@
 'use strict';
 
-function BlockView (_container) {
-    var content = _container,
+function BlockView () {
+    var content = implementation.get('colorBlock'),
         containerDiv = document.createElement('div');
 
     this.displayBlock = function () {
