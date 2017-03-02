@@ -1,7 +1,7 @@
 'use strict';
 
-function CounterView () {
-    var content = implementation.get('colorBlock'),
+function CounterView (_content) {
+    var content = _content('colorBlock'),
         containerDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toJSON(),
@@ -22,7 +22,7 @@ function CounterView () {
         content.appendChild(containerDiv);
     };
 
-    this.changeCounter = function (_color) {
+    mediator.sub('changeCounter', function (_color) {
         var counterDiv = document.querySelectorAll('.mainDiv')[2],
             stringCounter ='';
 
@@ -37,7 +37,8 @@ function CounterView () {
         }
 
         counterDiv.innerHTML = stringCounter;
-    };
+    });
 
     return this;
 }
+

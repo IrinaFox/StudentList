@@ -38,10 +38,7 @@ function ColorCounter () {
 
     this.set = function (_value) {
         colorNow = _value;
-        this.pub(colorNow);
     };
 
     return this;
 }
-
-ColorCounter.prototype = new Observer();

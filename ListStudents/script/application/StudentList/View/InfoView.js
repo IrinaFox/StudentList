@@ -1,14 +1,14 @@
 'use strict';
 
 //Create new window with more information. works only one time
-function InfoView () {
+function InfoView (_content) {
     var infoDiv = document.createElement('div'),
         buttonClose;
 
     mediator.sub('infoChange', function (student) {
          var stringElement = replacer(student, infoWindowTpl),
              infoWindowList = document.querySelector('#infoWindowList'),
-             content = implementation.get('info');
+             content = _content('info');
 
         infoDiv.setAttribute('id', 'infoWindowList');
         infoDiv.classList.add('infoWindow');

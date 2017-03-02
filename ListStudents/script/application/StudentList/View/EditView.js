@@ -1,7 +1,7 @@
 'use strict';
 
 //Make new window, where the user can edit all data except age and birthday
-function EditView () {
+function EditView (_content) {
     var containerDiv = document.createElement('div'),
         closeButton,
         saveButton,
@@ -27,7 +27,7 @@ function EditView () {
     });
 
     function showEdit () {
-        var content = implementation.get('info'),
+        var content = _content('info'),
             string = '';
 
         delete studentJSON['birthdayDate'];

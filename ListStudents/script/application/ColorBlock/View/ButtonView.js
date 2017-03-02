@@ -1,46 +1,37 @@
 'use strict';
 
-function ButtonView () {
-    var content = implementation.get('colorBlock'),
+function ButtonView (_content) {
+    var content = _content('colorBlock'),
         miniDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
-        colors = colorCounter.toArray(),
-        counter = new CounterView(),
-        block =  new BlockView();
+        colors = colorCounter.toArray();
+
+    content.appendChild(miniDiv);
+    miniDiv.classList.add('mainDiv');
 
     this.displayButton = function () {
-        var stringElement = '';
-
         colors.forEach(function (color) {
-            var newButton = buttonColorTpl.replace(/:color/g, color);
+            var buttonDiv = document.createElement('div'),
+                stringButton = buttonColorTpl.replace(/:color/g, color),
+                button;
 
-            stringElement += newButton;
+            buttonDiv.innerHTML = stringButton;
+            miniDiv.appendChild(buttonDiv);
 
-            colorCounter.sub(color, function () {
-                block.changeBlock(color);
-                counter.changeCounter(color);
-            });
+            button = buttonDiv.querySelector('input');
+
+            button.addEventListener('click', changeCounter, false);
+            button.addEventListener('click', changeBlock, false);
+
+            function changeCounter () {
+                mediator.pub('changeCounter', color);
+            }
+
+            function changeBlock () {
+                mediator.pub('changeBlock', color);
+            }
         });
-
-        miniDiv.innerHTML += stringElement;
-        miniDiv.classList.add('mainDiv');
-
-        content.appendChild(miniDiv);
-
-        addEvent();
     };
-
-    function addEvent () {
-        var buttons = miniDiv.querySelectorAll('input');
-
-        [].forEach.call(buttons, function (button) {
-            button.addEventListener('click', function () {
-                var color = button.value;
-
-                colorCounter.set(color);
-            }, false);
-        });
-    }
 
     return this;
 }
