@@ -1,15 +1,13 @@
 'use strict';
 
-function ButtonView (_content) {
-    var content = _content('colorBlock'),
-        miniDiv = document.createElement('div'),
+function ButtonView () {
+    var miniDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toArray();
 
-    content.appendChild(miniDiv);
     miniDiv.classList.add('mainDiv');
 
-    this.displayButton = function () {
+    this.render = function () {
         colors.forEach(function (color) {
             var buttonDiv = document.createElement('div'),
                 stringButton = buttonColorTpl.replace(/:color/g, color),
@@ -31,6 +29,8 @@ function ButtonView (_content) {
                 mediator.pub('changeBlock', color);
             }
         });
+
+        return miniDiv;
     };
 
     return this;

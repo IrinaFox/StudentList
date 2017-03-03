@@ -1,13 +1,12 @@
 'use strict';
 
-function BlockView (_content) {
-    var content = _content('colorBlock'),
-        containerDiv = document.createElement('div');
+function BlockView () {
+    var containerDiv = document.createElement('div');
 
-    this.displayBlock = function () {
+    this.render = function () {
         containerDiv.classList.add('mainDiv');
         containerDiv.innerHTML = blockTpL;
-        content.appendChild(containerDiv);
+        return containerDiv;
     };
 
     mediator.sub('changeBlock',function (_color) {

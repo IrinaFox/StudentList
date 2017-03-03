@@ -7,16 +7,15 @@ function ItemView (_student) {
         moreButton,
         editButton;
 
-    this.displayStudent = function () {
-        var content = document.querySelector('#contentStudentList'),
-            stringElement = replacer(student, itemTpl);
+    this.render = function () {
+        var stringElement = replacer(student, itemTpl);
 
         containerDiv.innerHTML = stringElement;
         containerDiv.classList.add('line');
 
-        content.appendChild(containerDiv);
+        addEvent();
 
-       addEvent();
+        return containerDiv;
     };
 
     student.sub('change', function () {
@@ -43,11 +42,11 @@ function ItemView (_student) {
     }
 
     function changeInfoStatus () {
-        mediator.pub('infoChange', student);
+        mediator.pub('StudentListInfoChanged', student);
     }
 
     function showEdit () {
-        mediator.pub('editChange', student);
+        mediator.pub('StudentListEditChanged', student);
     }
 
     return this;

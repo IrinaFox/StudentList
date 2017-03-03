@@ -1,7 +1,7 @@
 'use strict';
 
 //Make new window, where the user can edit all data except age and birthday
-function EditView (_content) {
+function EditView () {
     var containerDiv = document.createElement('div'),
         closeButton,
         saveButton,
@@ -11,24 +11,21 @@ function EditView (_content) {
 
     containerDiv.setAttribute('id', 'infoWindowList');
 
-    mediator.sub('editChange', function (_student) {
+    this.render = function (_student) {
         var infoWindowList = document.querySelector('#infoWindowList');
 
         student = _student;
         studentJSON = student.toJSON();
 
-        if (infoWindowList) {
-            infoWindowList.parentNode.removeChild(infoWindowList);
-        }
-
         showEdit();
         addEventButtonClose();
         addEventButtonSave();
-    });
+
+        return containerDiv;
+    };
 
     function showEdit () {
-        var content = _content('info'),
-            string = '';
+        var string = '';
 
         delete studentJSON['birthdayDate'];
         delete studentJSON['fullName'];
@@ -41,8 +38,6 @@ function EditView (_content) {
 
         string += buttonTpl;
         containerDiv.innerHTML = string;
-
-        content.appendChild(containerDiv);
     }
 
     function addEventButtonClose () {
@@ -79,7 +74,7 @@ function EditView (_content) {
         }
 
         closeEditForm();
-        mediator.pub('infoChange', student);
+        mediator.pub('StudentListInfoChanged', student);
         saveButton.removeEventListener('click', saveEditForm);
     }
 

@@ -36,9 +36,7 @@ function ColorCounter () {
         return JSON;
     };
 
-    this.set = function (_value) {
-        colorNow = _value;
-    };
-
     return this;
 }
+
+ColorCounter.prototype = new Observer();

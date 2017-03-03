@@ -1,13 +1,12 @@
 'use strict';
 
-function CounterView (_content) {
-    var content = _content('colorBlock'),
-        containerDiv = document.createElement('div'),
+function CounterView () {
+    var containerDiv = document.createElement('div'),
         colorCounter = new ColorCounter(),
         colors = colorCounter.toJSON(),
         key;
 
-    this.displayCounter = function () {
+    this.render = function () {
         var stringElement = '';
 
         for (key in colors) {
@@ -19,14 +18,12 @@ function CounterView (_content) {
         containerDiv.classList.add('mainDiv');
         containerDiv.innerHTML = stringElement;
 
-        content.appendChild(containerDiv);
+        return containerDiv;
     };
 
     mediator.sub('changeCounter', function (_color) {
-        var counterDiv = document.querySelectorAll('.mainDiv')[2],
-            stringCounter ='';
+        var stringCounter ='';
 
-        counterDiv.innerHTML = '';
         containerDiv.innerHTML = '';
 
         colorCounter.increaseCounter(_color);
@@ -36,7 +33,7 @@ function CounterView (_content) {
             stringCounter += key + ': ' + colors[key] + '<br>';
         }
 
-        counterDiv.innerHTML = stringCounter;
+        containerDiv.innerHTML = stringCounter;
     });
 
     return this;

@@ -1,25 +1,29 @@
 'use strict';
 
 function ControllerColorBlock () {
-    this.implementation = function (name) {
-        var _colorBlock = document.querySelector('#contentColorBlock'),
-            address = {
-                colorBlock: _colorBlock
-            };
-
-        return address[name];
-    };
+    var _colorBlock = document.querySelector('#contentColorBlock'),
+        buttonView = new ButtonView(),
+        counterView = new CounterView(),
+        blockView = new BlockView(),
+        buttons = buttonView.render(),
+        counter = counterView.render(),
+        block = blockView.render();
 
     this.display = function () {
-        var content = this.implementation,
-            button = new ButtonView(content),
-            counter = new CounterView(content),
-            block = new BlockView(content);
-
-        button.displayButton();
-        block.displayBlock();
-        counter.displayCounter();
+        _colorBlock.appendChild(buttons);
+        _colorBlock.appendChild(block);
+        _colorBlock.appendChild(counter);
     };
 
     this.display();
+
+    mediator.sub('changeBlock',function (_color) {
+        var block = document.querySelector('#block'),
+            color = _color;
+
+        block.removeAttribute('class');
+        block.classList.add(color);
+    });
+
+    return this;
 }

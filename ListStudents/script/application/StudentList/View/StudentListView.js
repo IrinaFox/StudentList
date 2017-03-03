@@ -1,29 +1,30 @@
 'use strict';
 
 function StudentListView (_students, _content) {
-    var students = _students;
+    var students = _students,
+        listDiv = document.createElement('div');
 
-    this.displayStudentList = function () {
-        addHeader();
-
+    this.render = function () {
         students.forEach(function (item) {
             createStudent(item);
         });
+
+        return listDiv;
     };
 
-    function addHeader () {
-        var content = _content('studentList'),
-            containerDiv = document.createElement('div');
+    this.renderHeader = function () {
+        var containerDiv = document.createElement('div');
 
         containerDiv.innerHTML = headerTpl;
         containerDiv.classList.add('line');
         containerDiv.setAttribute('id', 'menu');
 
-        content.appendChild(containerDiv);
-    }
+        return containerDiv;
+    };
 
     function createStudent (item) {
-        var student = new ItemView(item);
-        student.displayStudent();
+        var studentView = new ItemView(item),
+            student = studentView.render();
+            listDiv.appendChild(student);
     }
  }
