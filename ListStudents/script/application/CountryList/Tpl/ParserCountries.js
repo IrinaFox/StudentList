@@ -1,11 +1,10 @@
 'use strict';
 
+//Create countries list
 function parserCountries () {
     var countriesListCSV = countriesSCV.split(/\r?\n/),
         regions = parserContinents(),
         countryList = [];
-
-
 
     countriesListCSV.forEach(function (country) {
         var countryData = country.split('	'),
@@ -35,6 +34,7 @@ function parserCountries () {
     return countryList;
 }
 
+//Find unique regions
 function parserContinents () {
     var continents = countriesSCV.split(/\r?\n/),
         uniqueContinents =[],

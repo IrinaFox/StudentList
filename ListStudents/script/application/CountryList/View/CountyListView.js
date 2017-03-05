@@ -27,4 +27,6 @@ function CountyListView (_countries) {
             country = countryView.render();
         listDiv.appendChild(country);
     }
+
+    return this;
 }

@@ -2,10 +2,14 @@
     display: inline-block;
 }
 
-#countryList .line {
+.lineCountry {
     background-color: #fff1f8;
 }
 
 #countryList #menu {
     background-color: #f0ceec;
+}
+
+.brightCountry {
+    background-color: #a5ffd5;
 }

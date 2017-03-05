@@ -14,5 +14,9 @@ function ControllerCountryList () {
 
     this.display();
 
+    mediator.sub('CountryListCountryDeleted', function () {
+
+    });
+
     return this;
 }
