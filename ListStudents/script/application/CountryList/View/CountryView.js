@@ -15,7 +15,6 @@ function CountryView (_country) {
 
         addEvents();
 
-
         return containerDiv;
     };
 
@@ -26,39 +25,25 @@ function CountryView (_country) {
         buttonDislike = buttons[1];
         buttonDelete = buttons[2];
 
-        eventToButtonDislike();
-        eventToButtonLike();
-    }
-
-    function eventToButtonDislike () {
-        buttonDislike.addEventListener('click', hidCountry, false);
+        buttonDislike.addEventListener('click', eventToButtonDislike, false);
+        buttonLike.addEventListener('click', eventToButtonLike, false);
+        buttonDelete.addEventListener('click', eventToButtonDelete, false);
     }
 
     function eventToButtonLike () {
-        buttonLike.addEventListener('click', brightCountry, false);
-    }
-
-    function eventToButtonDelete () {
-        buttonLike.addEventListener('click', deleteCountry, false);
-    }
-
-    function hidCountry () {
-        containerDiv.parentNode.removeChild(containerDiv);
-        buttonDislike.removeEventListener('click', hidCountry);
-        buttonLike.removeEventListener('click', brightCountry);
-        buttonLike.removeEventListener('click', deleteCountry);
-    }
-
-    function brightCountry () {
-        console.log('clicked');
         containerDiv.classList.add('brightCountry')
     }
 
-    function deleteCountry () {
+    function eventToButtonDislike () {
+        containerDiv.parentNode.removeChild(containerDiv);
+        buttonDislike.removeEventListener('click', eventToButtonDislike);
+        buttonLike.removeEventListener('click', eventToButtonDelete);
+        buttonLike.removeEventListener('click', eventToButtonDelete);
+    }
 
-        buttonDislike.removeEventListener('click', hidCountry);
-        buttonLike.removeEventListener('click', brightCountry);
-        buttonLike.removeEventListener('click', deleteCountry);
+    function eventToButtonDelete () {
+        eventToButtonDislike();
+        mediator.pub('CountryListCountryDeleted', country);
     }
 
     return this;

@@ -33,5 +33,3 @@ function Country (_name, _population, _area, _continent) {
 
     return this;
 }
-
-Country.prototype = new Mediator();
