@@ -15,7 +15,7 @@ function StudentListView (_students, _content) {
     this.renderHeader = function () {
         var containerDiv = document.createElement('div');
 
-        containerDiv.innerHTML = headerTpl;
+        containerDiv.innerHTML = headerStudentListTpl;
         containerDiv.classList.add('line');
         containerDiv.setAttribute('id', 'menu');
 

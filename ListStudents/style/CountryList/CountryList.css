@@ -1,0 +1,11 @@
+#countryList {
+    display: inline-block;
+}
+
+#countryList .line {
+    background-color: #fff1f8;
+}
+
+#countryList #menu {
+    background-color: #f0ceec;
+}
