@@ -12,10 +12,11 @@ function CountryList () {
         for (i=0; i<countries.length; i++) {
             if (countries[i].get('name') === country.get('name')) {
                 var index = countries.indexOf(country);
-                console.log(index);
                 countries.splice(index, 1);
             }
         }
+
+        mediator.pub('countryDeleted');
     };
 
     return this;

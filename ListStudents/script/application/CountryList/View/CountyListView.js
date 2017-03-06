@@ -2,14 +2,7 @@
 
 function CountyListView (_countries) {
     var countries = _countries,
-        continents = {
-           australia: [],
-           america: [],
-           europa: [],
-           africa: [],
-           asia: [],
-           all: []
-        };
+        continents;
 
     creating();
 
@@ -52,7 +45,17 @@ function CountyListView (_countries) {
         return containerDiv;
     };
 
+    mediator.sub('countryDeleted', creating);
+
     function creating  () {
+        continents = {
+            australia: [],
+            america: [],
+            europa: [],
+            africa: [],
+            asia: [],
+            all: []
+        };
         countries.forEach(function (country) {
             createCountry(country);
         });
