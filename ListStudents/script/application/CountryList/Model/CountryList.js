@@ -15,8 +15,6 @@ function CountryList () {
                 countries.splice(index, 1);
             }
         }
-
-        mediator.pub('countryDeleted');
     };
 
     return this;

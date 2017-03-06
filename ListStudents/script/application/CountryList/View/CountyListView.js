@@ -4,13 +4,17 @@ function CountyListView (_countries) {
     var countries = _countries,
         continents;
 
-    creating();
+
 
     this.render = function (name) {
       var listDiv = document.createElement('div'),
-          countries = continents[name];
+          countries;
 
-        continents[name].forEach(function (item) {
+        creating();
+
+        countries = continents[name];
+
+        countries.forEach(function (item) {
            listDiv.appendChild(item);
         });
 
@@ -44,8 +48,6 @@ function CountyListView (_countries) {
 
         return containerDiv;
     };
-
-    mediator.sub('countryDeleted', creating);
 
     function creating  () {
         continents = {
