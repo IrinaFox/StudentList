@@ -1,13 +1,13 @@
 'use strict';
 
-function CountryView (_country) {
+function CountryView (_country){
     var containerDiv = document.createElement('div'),
         country = _country,
         buttonDislike,
         buttonDelete,
         buttonLike;
 
-    this.render = function () {
+    /*this.render = function () {
         var stringElement = replacer(country, countryTpl);
 
         containerDiv.innerHTML = stringElement;
@@ -16,19 +16,12 @@ function CountryView (_country) {
         addEvents();
 
         return containerDiv;
+    }; */
+
+    this.render = function () {
+        return this.renderElement(containerDiv, country, countryTpl, 'lineCountry', addEvents);
     };
 
-    function addEvents () {
-        var buttons = containerDiv.querySelectorAll('input');
-
-        buttonLike = buttons[0];
-        buttonDislike = buttons[1];
-        buttonDelete = buttons[2];
-
-        buttonDislike.addEventListener('click', eventToButtonDislike, false);
-        buttonLike.addEventListener('click', eventToButtonLike, false);
-        buttonDelete.addEventListener('click', eventToButtonDelete, false);
-    }
 
     function eventToButtonLike () {
         containerDiv.classList.add('brightCountry')
@@ -46,5 +39,19 @@ function CountryView (_country) {
         mediator.pub('CountryListCountryDeleted', country);
     }
 
+    function addEvents () {
+        var buttons = containerDiv.querySelectorAll('input');
+
+        buttonLike = buttons[0];
+        buttonDislike = buttons[1];
+        buttonDelete = buttons[2];
+
+        buttonDislike.addEventListener('click', eventToButtonDislike, false);
+        buttonLike.addEventListener('click', eventToButtonLike, false);
+        buttonDelete.addEventListener('click', eventToButtonDelete, false);
+    }
+
     return this;
 }
+
+CountryView.prototype = new View();

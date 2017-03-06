@@ -4,7 +4,7 @@ function ControllerCountryList () {
     var _countryList = document.querySelector('#countryList'),
         _countries = document.querySelector('#countries'),
         countries = new CountryList(),
-        countryListView = new CountyListView(countries),
+        countryListView = new CountryListView(countries),
         countryList = countryListView.render('all'),
         countryHeader = countryListView.renderHeader(),
         buttonContinent = countryListView.renderButtonContinent();

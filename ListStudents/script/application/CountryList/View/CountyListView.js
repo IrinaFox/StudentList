@@ -1,27 +1,54 @@
 'use strict';
 
-function CountyListView (_countries) {
-    var countries = _countries,
-        continents;
+var CountryListView = (function () {
+    var continents;
 
+    function CountyListViewInsert (_countries) {
+        var countries = _countries;
 
+        this.render = function (name) {
+            var listDiv = document.createElement('div'),
+                countries;
 
-    this.render = function (name) {
-      var listDiv = document.createElement('div'),
-          countries;
+            creating();
+            countries = continents[name];
 
-        creating();
+            countries.forEach(function (item) {
+                listDiv.appendChild(item);
+            });
 
-        countries = continents[name];
+            return listDiv;
+        };
 
-        countries.forEach(function (item) {
-           listDiv.appendChild(item);
-        });
+        function creating() {
+            continents = {
+                australia: [],
+                america: [],
+                europa: [],
+                africa: [],
+                asia: [],
+                all: []
+            };
+            countries.forEach(function (country) {
+                createCountry(country);
+            });
+        }
 
-       return listDiv;
-    };
+        return this;
+    }
 
-    this.renderHeader = function () {
+    function createCountry(item) {
+        var countryView = new CountryView(item),
+            country = countryView.render(),
+            continent = item.get('continent');
+
+        continents[continent].push(country);
+        continents['all'].push(country);
+    }
+
+    CountyListViewInsert.prototype = new View;
+
+    CountyListViewInsert.prototype.renderHeader = function () {
         var containerDiv = document.createElement('div');
 
         containerDiv.innerHTML = headerCountryListTpl;
@@ -31,7 +58,7 @@ function CountyListView (_countries) {
         return containerDiv;
     };
 
-    this.renderButtonContinent = function () {
+    CountyListViewInsert.prototype.renderButtonContinent = function () {
         var containerDiv = document.createElement('div'),
             buttons;
 
@@ -46,55 +73,27 @@ function CountyListView (_countries) {
         buttons[4].addEventListener('click', addEventAustralia, false);
         buttons[5].addEventListener('click', addEventAll, false);
 
+        function addEventAsia() {
+            mediator.pub('continentChosen', 'asia');
+        }
+        function addEventEuropa() {
+            mediator.pub('continentChosen', 'europa');
+        }
+        function addEventAmerica() {
+            mediator.pub('continentChosen', 'america');
+        }
+        function addEventAfrica() {
+            mediator.pub('continentChosen', 'africa');
+        }
+        function addEventAustralia() {
+            mediator.pub('continentChosen', 'australia');
+        }
+        function addEventAll() {
+            mediator.pub('continentChosen', 'all');
+        }
+
         return containerDiv;
     };
 
-    function creating  () {
-        continents = {
-            australia: [],
-            america: [],
-            europa: [],
-            africa: [],
-            asia: [],
-            all: []
-        };
-        countries.forEach(function (country) {
-            createCountry(country);
-        });
-    }
-
-    function createCountry (item) {
-        var countryView = new CountryView(item),
-            country = countryView.render(),
-            continent = item.get('continent');
-
-        continents[continent].push(country);
-        continents['all'].push(country);
-    }
-
-    function addEventAsia () {
-        mediator.pub('continentChosen', 'asia');
-    }
-
-    function addEventEuropa () {
-        mediator.pub('continentChosen', 'europa');
-    }
-
-    function addEventAmerica () {
-        mediator.pub('continentChosen', 'america');
-    }
-
-    function addEventAfrica () {
-        mediator.pub('continentChosen', 'africa');
-    }
-
-    function addEventAustralia () {
-        mediator.pub('continentChosen', 'australia');
-    }
-
-    function addEventAll () {
-        mediator.pub('continentChosen', 'all');
-    }
-
-    return this;
-}
+    return CountyListViewInsert;
+})();
