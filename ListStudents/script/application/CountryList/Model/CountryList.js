@@ -18,9 +18,5 @@ function CountryList () {
         }
     };
 
-    this.countries = function () {
-      return countries;
-    };
-
     return this;
 }

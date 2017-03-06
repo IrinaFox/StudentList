@@ -16,15 +16,15 @@ function parserCountries () {
             newCountry;
 
         if (region === regions[0] || region === regions[7] || region === regions[8]) {
-            continent = 'Asia';
+            continent = 'asia';
         } else if (region === regions[1] || region === regions[4] || region === regions[10]) {
-            continent = 'Europa';
+            continent = 'europa';
         } else if (region === regions[2] || region === regions[5]) {
-            continent = 'Africa';
+            continent = 'africa';
         } else if (region === regions[3]) {
-            continent = 'Australia';
+            continent = 'australia';
         } else if (region === regions[6] || region === regions[9]) {
-            continent = 'America';
+            continent = 'america';
         }
 
         newCountry = new Country(countryName, population, area, continent);

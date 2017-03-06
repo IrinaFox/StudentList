@@ -2,14 +2,26 @@
 
 function CountyListView (_countries) {
     var countries = _countries,
-        listDiv = document.createElement('div');
+        continents = {
+           australia: [],
+           america: [],
+           europa: [],
+           africa: [],
+           asia: [],
+           all: []
+        };
 
-    this.render = function () {
-        countries.forEach(function (country) {
-            createCountry(country);
+    creating();
+
+    this.render = function (name) {
+      var listDiv = document.createElement('div'),
+          countries = continents[name];
+
+        continents[name].forEach(function (item) {
+           listDiv.appendChild(item);
         });
 
-        return listDiv;
+       return listDiv;
     };
 
     this.renderHeader = function () {
@@ -22,10 +34,61 @@ function CountyListView (_countries) {
         return containerDiv;
     };
 
+    this.renderButtonContinent = function () {
+        var containerDiv = document.createElement('div'),
+            buttons;
+
+        containerDiv.innerHTML = buttonContinentTpl;
+        containerDiv.classList.add('containerButtonContinent');
+
+        buttons = containerDiv.querySelectorAll('input');
+        buttons[0].addEventListener('click', addEventAsia, false);
+        buttons[1].addEventListener('click', addEventEuropa, false);
+        buttons[2].addEventListener('click', addEventAfrica, false);
+        buttons[3].addEventListener('click', addEventAmerica, false);
+        buttons[4].addEventListener('click', addEventAustralia, false);
+        buttons[5].addEventListener('click', addEventAll, false);
+
+        return containerDiv;
+    };
+
+    function creating  () {
+        countries.forEach(function (country) {
+            createCountry(country);
+        });
+    }
+
     function createCountry (item) {
         var countryView = new CountryView(item),
-            country = countryView.render();
-        listDiv.appendChild(country);
+            country = countryView.render(),
+            continent = item.get('continent');
+
+        continents[continent].push(country);
+        continents['all'].push(country);
+    }
+
+    function addEventAsia () {
+        mediator.pub('continentChosen', 'asia');
+    }
+
+    function addEventEuropa () {
+        mediator.pub('continentChosen', 'europa');
+    }
+
+    function addEventAmerica () {
+        mediator.pub('continentChosen', 'america');
+    }
+
+    function addEventAfrica () {
+        mediator.pub('continentChosen', 'africa');
+    }
+
+    function addEventAustralia () {
+        mediator.pub('continentChosen', 'australia');
+    }
+
+    function addEventAll () {
+        mediator.pub('continentChosen', 'all');
     }
 
     return this;
