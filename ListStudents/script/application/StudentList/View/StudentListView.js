@@ -21,6 +21,17 @@ function StudentListView (_students, _content) {
 
         return containerDiv;
     };
+    
+    this.display = function () {
+		var header = this.renderHeader(),
+			studentList = this.render(),
+			f = document.createDocumentFragment();
+		
+       f.appendChild(header);
+       f.appendChild(studentList);
+	   
+	   return f;	   
+    };
 
     function createStudent (item) {
         var studentView = new ItemView(item),
