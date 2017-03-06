@@ -11,8 +11,6 @@ function ControllerStudentList () {
 
    _studentList.appendChild(studentListView.display());
 
-    this.display();
-
     mediator.sub('StudentListInfoChanged', function (_student) {
         var infoWindowList = document.querySelector('#infoWindowList'),
             info = infoView.render(_student);
