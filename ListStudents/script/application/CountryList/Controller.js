@@ -18,6 +18,7 @@ function ControllerCountryList () {
     });
 
     mediator.sub('continentChosen', function (name) {
+        mediator.pub('CountryList');
         countryList = countryListView.render(name);
         _countryList.innerHTML = '';
         _countryList.appendChild(countryHeader);
