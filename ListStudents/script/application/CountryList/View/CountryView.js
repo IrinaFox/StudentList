@@ -31,11 +31,7 @@ var CountryView = (function () {
 
         this.set = function (key, value) {
             values[key] = value;
-        };
-        
-        mediator.sub('CountryList', function () {
-			removeEvents();
-		});			
+        };      			
 
         function addEvents () {
             var buttons = values['containerDiv'].querySelectorAll('input');
