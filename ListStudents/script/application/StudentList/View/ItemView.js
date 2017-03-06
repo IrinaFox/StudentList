@@ -1,53 +1,61 @@
 'use strict';
 
 //For one line with datas of student
-function ItemView (_student) {
-    var containerDiv = document.createElement('div'),
-        student = _student,
-        moreButton,
-        editButton;
+var ItemView = (function () {
+    function ItemView (_student) {
+        var containerDiv = document.createElement('div'),
+            student = _student,
+            moreButton,
+            editButton;
 
-    this.render = function () {
-        var stringElement = replacer(student, itemTpl);
+        /*this.render = function () {
+         var stringElement = replacer(student, itemTpl);
 
-        containerDiv.innerHTML = stringElement;
-        containerDiv.classList.add('line');
+         containerDiv.innerHTML = stringElement;
+         containerDiv.classList.add('line');
 
-        addEvent();
+         addEvent();
 
-        return containerDiv;
-    };
+         return containerDiv;
+         };*/
 
-    student.sub('change', function () {
-        var stringElement = replacer(student, itemTpl);
+        this.render = function () {
+            return this.renderElement(containerDiv, student, itemTpl, 'line', addEvent);
+        };
 
-        //Delete data with buttons and their events
-        moreButton.removeEventListener('click', changeInfoStatus, false);
-        editButton.removeEventListener('click', showEdit, false);
-        containerDiv.innerHTML = '';
+        student.sub('change', function () {
+            var stringElement = replacer(student, itemTpl);
 
-        //Set new data and new events to buttons
-        containerDiv.innerHTML = stringElement;
-        addEvent();
-    });
+            //Delete data with buttons and their events
+            moreButton.removeEventListener('click', changeInfoStatus, false);
+            editButton.removeEventListener('click', showEdit, false);
+            containerDiv.innerHTML = '';
 
-    function addEvent () {
-        var buttons = containerDiv.querySelectorAll('input');
+            //Set new data and new events to buttons
+            containerDiv.innerHTML = stringElement;
+            addEvent();
+        });
 
-        moreButton = buttons[0];
-        editButton = buttons[1];
+        function addEvent() {
+            var buttons = containerDiv.querySelectorAll('input');
 
-        moreButton.addEventListener('click', changeInfoStatus, false);
-        editButton.addEventListener('click', showEdit, false);
+            moreButton = buttons[0];
+            editButton = buttons[1];
+
+            moreButton.addEventListener('click', changeInfoStatus, false);
+            editButton.addEventListener('click', showEdit, false);
+        }
+
+        function changeInfoStatus() {
+            mediator.pub('StudentListInfoChanged', student);
+        }
+
+        function showEdit() {
+            mediator.pub('StudentListEditChanged', student);
+        }
     }
 
-    function changeInfoStatus () {
-        mediator.pub('StudentListInfoChanged', student);
-    }
+    ItemView.prototype = new View();
 
-    function showEdit () {
-        mediator.pub('StudentListEditChanged', student);
-    }
-
-    return this;
-}
+    return ItemView;
+})();
